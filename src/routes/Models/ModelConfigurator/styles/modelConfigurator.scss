@@ -1,0 +1,200 @@
+.modelConfigurator {
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
+  @media screen and (min-width: 64rem) {
+    flex-direction: row;
+  }
+
+  &__overview {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 2rem 1rem;
+    background-color: #f1f3f2;
+
+
+    @media screen and (min-width: 64rem) {
+      height: 100%;
+      padding: 14rem 2rem 4rem;
+    }
+
+    @media screen and (min-width: 64rem) {
+      width: 65%;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    object-fit: contain;
+  }
+
+  &__name {
+    margin-top: 1.4rem;
+    font-weight: 700;
+    text-align: center;
+
+    @media screen and (min-width: 64rem) {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 2.4rem;
+      text-align: left;
+      font-size: 1.4rem;
+    }
+  }
+
+  &__trimName {
+    font-weight: 400;
+  }
+
+  &__color {
+    font-size: .85rem;
+    font-weight: 400;
+
+    @media screen and (min-width: 64rem) {
+      margin-top: .25rem;
+      font-size: 1rem;
+    }
+  }
+
+  &__price {
+    margin-top: .45rem;
+    font-size: .85rem;
+    font-weight: 700;
+
+    @media screen and (min-width: 64rem) {
+      margin-top: auto;
+      font-size: 1.4rem;
+    }
+  }
+
+  &__steps {
+    flex: 1 1;
+    height: 100%;
+    width: 100%;
+    overflow-y: hidden;
+  }
+
+  &__interactionPanel {
+    position: relative;
+    flex: 1 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: hidden;
+  }
+
+  &__content {
+    padding: 4rem 2rem 6rem;
+    overflow-y: auto;
+
+    @media screen and (min-width: 64rem) {
+      padding: 4rem 4rem 6rem;
+    }
+  }
+
+  &__trims {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 2rem;
+  }
+
+  &__trim {
+    padding: 2.4rem;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    max-width: 22rem;
+
+    &:not(:first-child) {
+      margin-top: 1rem;
+    }
+  }
+
+  &__navigation {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: .5rem 1rem;
+    background-color: hsla(0, 0%, 100%, .5);
+    backdrop-filter: blur(10px);
+  }
+
+  &__navigationButton {
+    svg {
+
+      fill: #fff;
+    }
+
+    &.backButton {
+      svg {
+        -webkit-transform: rotateY(180deg);
+        transform: rotateY(180deg);
+        fill: #007edb;
+      }
+    }
+  }
+
+
+  &__colors {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 24rem;
+    margin: -.5rem auto;
+  }
+
+  &__colorButton {
+    min-width: 6rem;
+    text-align: center;
+    cursor: pointer;
+    width: calc(33.33333% - 1rem);
+    margin: .5rem;
+
+    &.active {
+      .modelConfigurator__colorImage {
+        padding: 0;
+      }
+    }
+  }
+
+  &__colorImage {
+    --color-button-size: 2.25rem;
+    width: var(--color-button-size);
+    height: var(--color-button-size);
+    padding: .25rem;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+  }
+
+  &__colorsTitle {
+    margin-top: .1rem;
+    font-size: .8rem;
+    color: #1a1a1a;
+  }
+
+  &__colorsPrice {
+    color: #666;
+    font-size: .8rem;
+  }
+
+  &__buttonPrice {
+    margin-top: .3rem;
+    font-size: .9rem;
+    font-weight: 400;
+    text-transform: none;
+  }
+}
