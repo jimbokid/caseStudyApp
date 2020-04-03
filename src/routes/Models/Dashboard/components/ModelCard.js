@@ -1,9 +1,14 @@
-import React from 'react';
+// @flow
+import * as React from 'react';
 import {formatNumber} from "../../../../utils/globalUtils";
 import {Link} from 'react-router-dom';
-import PropTypes from 'prop-types';
+import type {ModelItem} from "../types/Models";
 
-const ModelCard = props => {
+type Props = {
+  model: ModelItem
+}
+
+const ModelCard = (props: Props) => {
   const {
     model
   } = props;
@@ -20,10 +25,6 @@ const ModelCard = props => {
       </div>
     </Link>
   );
-};
-
-ModelCard.propTypes = {
-  model: PropTypes.object
 };
 
 export default ModelCard;

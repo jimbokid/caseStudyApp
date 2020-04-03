@@ -1,10 +1,19 @@
-import React, {useEffect} from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import * as React from 'react';
 import WithLoader from "../../../../shared/WithLoader";
 import ModelCard from "./ModelCard";
+import type {ModelItem} from "../types/Models";
 
-const DashBoard = props => {
-  useEffect(() => {
+type Props = {
+  dashboardState: {
+    isLoading: boolean,
+    models: Array<ModelItem>
+  },
+  fetchModels: () => void,
+}
+
+const DashBoard = (props: Props) => {
+  React.useEffect(() => {
     props.fetchModels()
   }, []);// eslint-disable-line react-hooks/exhaustive-deps
 
@@ -28,11 +37,6 @@ const DashBoard = props => {
       </div>
     </WithLoader>
   );
-};
-
-DashBoard.propTypes = {
-  dashboardState: PropTypes.object,
-  fetchModels: PropTypes.func
 };
 
 export default DashBoard;

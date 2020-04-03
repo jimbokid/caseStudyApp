@@ -1,16 +1,24 @@
+// @flow
 import {types} from '../actions/ModelConfigurator';
+
+import type {ModelConfiguratorAction} from '../types/Action';
+import type {ModelConfiguratorState} from '../types/State'
 
 export const defaultState = {
   isLoading: true,
-  modelData: null,
+  modelData: {
+    code: '',
+    name: '',
+    trims: {}
+  },
   selected: {
     trimName: '',
     colorName: ''
   }
 };
 
-export default (state = defaultState, {type, payload}) => {
-  switch (type) {
+export default (state: ModelConfiguratorState = defaultState, action: ModelConfiguratorAction): ModelConfiguratorState => {
+  switch (action.type) {
 
     case types.CONFIGURATOR_SUBMIT_LOADER_HANDLE: {
       return {
@@ -30,11 +38,11 @@ export default (state = defaultState, {type, payload}) => {
       return {
         ...state,
         isLoading: false,
-        modelData: payload.modelData,
+        modelData: action.payload.modelData,
         selected: {
           ...state.selected,
-          trimName: payload.defaultTrim,
-          colorName: payload.defaultColor
+          trimName: action.payload.defaultTrim,
+          colorName: action.payload.defaultColor
         }
       }
     }
@@ -44,8 +52,8 @@ export default (state = defaultState, {type, payload}) => {
         ...state,
         selected: {
           ...state.selected,
-          trimName: payload.trimName,
-          colorName: payload.colorName
+          trimName: action.payload.trimName,
+          colorName: action.payload.colorName
         }
       }
     }
@@ -55,7 +63,7 @@ export default (state = defaultState, {type, payload}) => {
         ...state,
         selected: {
           ...state.selected,
-          colorName: payload.colorName
+          colorName: action.payload.colorName
         }
       }
     }

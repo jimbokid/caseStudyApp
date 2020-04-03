@@ -1,3 +1,5 @@
+// @flow
+
 import axios from 'axios';
 import {API_PATH} from "../../constants/appConstants";
 

@@ -1,3 +1,5 @@
+// @flow
+import * as React from 'react';
 import ModelConfigurator from "./components/ModelConfigurator";
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -7,11 +9,11 @@ import {
   handleColor,
   submitConfigurator
 } from "./actions/ModelConfigurator";
-import {getModelConfiguratorState} from "./selectors";
+import type {Props} from "./components/ModelConfigurator";
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({modelConfigurator}) => {
   return {
-    modelConfigurator: getModelConfiguratorState(state)
+    modelConfigurator: modelConfigurator
   };
 };
 
@@ -19,7 +21,7 @@ const mapDispatchToProps = dispatch => {
   return bindActionCreators({fetchModelDetail, handleTrim, handleColor, submitConfigurator}, dispatch)
 }
 
-export default connect(
+export default (connect(
   mapStateToProps,
   mapDispatchToProps,
-)(ModelConfigurator);
+)(ModelConfigurator): React.AbstractComponent<Props>);

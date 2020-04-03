@@ -1,7 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import * as React from 'react';
 
-const Index = props => {
+type Props = {
+  className: string,
+  children?: React.Node,
+  onClick?: () => void
+}
+
+const Button = (props: Props) => {
   return (
     <button className={`${props.className ? props.className : ''} pageButton`} onClick={props.onClick}>
       {props.children}
@@ -9,12 +15,4 @@ const Index = props => {
   );
 };
 
-Index.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-  ]),
-  className: PropTypes.string
-};
-
-export default Index;
+export default Button;

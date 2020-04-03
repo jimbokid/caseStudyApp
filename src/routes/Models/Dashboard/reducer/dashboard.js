@@ -1,3 +1,6 @@
+// @flow
+import type {DashboardAction} from '../types/Action';
+import type {DashboardState} from '../types/State';
 import {types} from '../actions/DashBoard';
 
 export const defaultState = {
@@ -5,8 +8,8 @@ export const defaultState = {
   models: []
 };
 
-export default (state = defaultState, {type, payload}) => {
-  switch (type) {
+export default (state: DashboardState = defaultState, action: DashboardAction): DashboardState => {
+  switch (action.type) {
     case types.DASHBOARD_FETCH_MODELS_START: {
       return {
         ...state,
@@ -18,7 +21,7 @@ export default (state = defaultState, {type, payload}) => {
       return {
         ...state,
         isLoading: false,
-        models: payload.models
+        models: action.payload.models
       }
     }
 

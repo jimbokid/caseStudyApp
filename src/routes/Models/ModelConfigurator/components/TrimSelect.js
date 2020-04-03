@@ -1,4 +1,5 @@
-import React, {Fragment} from 'react';
+// @flow
+import * as React from 'react';
 import Button from "../../../../shared/Button/";
 import {ModelConfiguratorContext} from "./ModelConfigurator";
 import {formatNumber} from "../../../../utils/globalUtils";
@@ -20,7 +21,7 @@ const TrimSelect = () => {
   } = modelConfigurator
 
   return (
-    <Fragment>
+    <>
       <div className="pageTitle">
         CHOOSE EQUIPMENT LEVEL
       </div>
@@ -41,7 +42,7 @@ const TrimSelect = () => {
           )
         })}
       </div>
-    </Fragment>
+    </>
   );
 };
 

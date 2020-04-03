@@ -1,3 +1,4 @@
+// @flow
 import React, {Fragment} from 'react';
 import {ModelConfiguratorContext} from "./ModelConfigurator";
 import {formatNumber} from "../../../../utils/globalUtils";
@@ -32,7 +33,7 @@ const ColorSelect = () => {
           return (
             <div className={`${isActive ? 'active' : ''} modelConfigurator__colorButton`} onClick={() => {
               handleColor(colorName)
-            }} key={key}>
+            }}>
               <img src={color.iconUrl} alt="" className="modelConfigurator__colorImage"/>
               <div className="modelConfigurator__colorsTitle">
                 {color.name}

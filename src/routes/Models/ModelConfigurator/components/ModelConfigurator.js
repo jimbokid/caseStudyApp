@@ -1,13 +1,43 @@
-import React, {useEffect} from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import * as React from 'react';
 import ModelOverView from "./ModelOverView";
 import ModelSteps from "./ModelSteps";
 import WithLoader from "../../../../shared/WithLoader";
+import type {ModelData, SelectedModel} from '../types/ModelDataTypes'
 
-export const ModelConfiguratorContext = React.createContext();
+type ModelConfiguratorProps = {
+  isLoading: boolean,
+  modelData: ModelData,
+  selected: SelectedModel
+}
 
-const ModelConfigurator = props => {
-  useEffect(() => {
+type ParamsProps = {
+  code: string,
+  type: string
+}
+
+type MatchProps = {
+  params: ParamsProps
+}
+
+type historyProps = {
+  push: (path: string) => void
+}
+
+export type Props = {
+  modelConfigurator: ModelConfiguratorProps,
+  fetchModelDetail: (code: string) => void,
+  match: MatchProps,
+  submitConfigurator: () => Promise<void>,
+  history: historyProps,
+  handleTrim: (trimName: string) => void,
+  handleColor: (colorName: string) => void
+}
+
+export const ModelConfiguratorContext: React.Context<Props> = React.createContext<any>();
+
+const ModelConfigurator = (props: Props) => {
+  React.useEffect(() => {
     const {
       match: {
         params
@@ -30,10 +60,6 @@ const ModelConfigurator = props => {
       </div>
     </WithLoader>
   );
-};
-
-ModelConfigurator.propTypes = {
-  modelConfigurator: PropTypes.object
 };
 
 export default ModelConfigurator;

@@ -1,4 +1,5 @@
-import React from 'react';
+// @flow
+import * as React from 'react';
 import Button from "../../../../shared/Button/";
 import TrimSelect from "./TrimSelect";
 import {ModelConfiguratorContext} from "./ModelConfigurator";
@@ -19,11 +20,9 @@ const ModelSteps = () => {
   } = React.useContext(ModelConfiguratorContext);
 
   function submitSteps() {
-    submitConfigurator().then(res => {
-      console.log(res)
+    submitConfigurator().then(() => {
       history.push('/checkout/success')
-    }).catch(error => {
-      console.log(error)
+    }).catch(() => {
       history.push('/checkout/failure')
     })
   }
@@ -44,9 +43,9 @@ const ModelSteps = () => {
           {type === 'colors' && <Button className={"modelConfigurator__navigationButton active"}
                                         onClick={submitSteps}>PROCEED</Button>}
 
-          <Link to={`/models/${code}/colors`} className={`${type === 'colors' ? 'hide' : ''} styles_navigationButton`}>
+          <Link to={`/models/${code}/colors`} className="styles_navigationButton">
             <Button
-              className={`modelConfigurator__navigationButton active }`}><NavigationArrow/></Button>
+              className={`modelConfigurator__navigationButton active ${type === 'colors' ? 'hide' : ''}`}><NavigationArrow/></Button>
           </Link>
         </div>
       </div>

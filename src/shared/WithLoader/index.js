@@ -1,8 +1,14 @@
-import React from 'react';
-import Loader from 'react-loader-spinner'
-import PropTypes from 'prop-types';
+// @flow
 
-const WithLoader = props => {
+import * as React from 'react';
+import Loader from 'react-loader-spinner'
+
+type Props = {
+  isLoading: boolean,
+  children?: React.Node,
+}
+
+const WithLoader = (props: Props) => {
   const {
     isLoading
   } = props;
@@ -20,13 +26,6 @@ const WithLoader = props => {
       ) : props.children}
     </div>
   );
-};
-
-WithLoader.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-  ]),
 };
 
 export default WithLoader;

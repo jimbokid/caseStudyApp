@@ -1,8 +1,17 @@
-import React from 'react';
+// @flow
+import * as React from 'react';
 import {ReactComponent as SuccessIcon} from '../../assets/success.svg';
 import {ReactComponent as FailureIcon} from '../../assets/failure.svg';
 
-const Checkout = props => {
+type Props = {
+  match: {
+    params: {
+      status: string
+    }
+  }
+}
+
+const Checkout = (props: Props) => {
   const {
     match: {
       params: {

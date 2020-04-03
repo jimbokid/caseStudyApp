@@ -1,11 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import * as React from 'react';
 import {formatNumber} from "../../../../utils/globalUtils";
 import {
   ModelConfiguratorContext
 } from './ModelConfigurator';
 import {calculateTotalPrice} from "../utils/modelConfiguratorUtils";
-
 
 const ModelOverView = () => {
   const {
@@ -19,7 +18,12 @@ const ModelOverView = () => {
   const activeModel = modelConfigurator.selected.trimName ? modelConfigurator.modelData.trims[modelConfigurator.selected.trimName] : null;
   const colorName = modelConfigurator.selected.colorName
   const modelName = modelConfigurator.modelData.name;
-  const price = calculateTotalPrice(activeModel,modelConfigurator.selected)
+
+  if (!activeModel) {
+    return null
+  }
+
+  const price = calculateTotalPrice(activeModel, modelConfigurator.selected)
 
   return (
     <div className="modelConfigurator__overview">
@@ -32,10 +36,6 @@ const ModelOverView = () => {
       <div className="modelConfigurator__price">{formatNumber(price)}</div>
     </div>
   );
-};
-
-ModelOverView.propTypes = {
-  modelConfigurator: PropTypes.object
 };
 
 export default ModelOverView;
